@@ -7,4 +7,4 @@ Trzecie, pamięć któtkotrwała, to ćwiczenie sprawi, że użytkownik zacznie 
 Czwatre, dzięki temu czytnikowi użytkownik wyćwiczy umiejetność czytania z wiekszą prędkością. To ćwiczenie bazuje na polu widzenia i pamięci krótkotrwałej (cwiczenie drugie i trzecie). Do tego ćwiczenia potrzeby jest plik txt z tekstem. Można skorzystać z pliku Potop.txt.
 Po serii ćwiczeń użytkownik może sprawdzić w jakim tempie czyta i jakie ma zrozumienie czytaniego tekstu.
 
-strona jest dostepna pod adresem http://zwawyczytacz/welcome/welcome
+strona jest dostepna pod adresem http://zwawyczytacz.pl/welcome/welcome
