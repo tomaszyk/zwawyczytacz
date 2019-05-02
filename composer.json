@@ -1,0 +1,19 @@
+{
+    "name": "tomek/aplikacja",
+    "authors": [
+        {
+            "name": "tomaszyk",
+            "email": "tomaszmlastek@gmail.com"
+        }
+    ],
+    "require": {
+        "swiftmailer/swiftmailer": "6.2"
+    },
+    "autoload": {
+        "psr-4":{
+            "App\\":"App/",
+            "Core\\":"Core/",
+            "vendor\\":"vendor/"
+        }
+    }
+}

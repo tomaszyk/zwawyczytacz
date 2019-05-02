@@ -1,0 +1,6 @@
+/* Klasa komunikató o błedach */
+.error 
+{
+    color:red;
+    font-weight: bold;
+}
