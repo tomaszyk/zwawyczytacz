@@ -20,10 +20,12 @@ class Form
     //Błędy
     protected $loginWBazie = '';
     protected $loginNiewlasciwaDlugosc = '';
+    protected $loginNiewlasciweZnaki = '';
     protected $loginZPolskimiZnakami = '';
     protected $emailWBazie = '';
     protected $emailZNiewlasciwymiZnakami = '';
     protected $hasloNiewlasciwaDlugosc = '';
+    protected $hasloNiewlasciweZnaki = '';
     protected $hasloInneWDrugimPolu = '';
     protected $regulaminBrakAkceptacji = '';
     protected $bledneDaneLogowania = '';
@@ -44,10 +46,11 @@ class Form
         //Błędy
         $this -> loginWBazie = $formBuilder -> getLoginWBazie();
         $this -> loginNiewlasciwaDlugosc = $formBuilder -> getLoginNiewlasciwaDlugosc();
-        $this -> loginZPolskimiZnakami = $formBuilder -> getLoginZPolskimiZnakami();
+        $this -> loginNiewlasciweZnaki = $formBuilder -> getLoginNiewlasciweZnaki();
         $this -> emailWBazie = $formBuilder -> getEmailWBazie();
         $this -> emailZNiewlasciwymiZnakami = $formBuilder -> getEmailZNiewlasciwymiZnakami();
         $this -> hasloNiewlasciwaDlugosc = $formBuilder -> getHasloNiewlasciwaDlugosc();
+        $this -> hasloNiewlasciweZnaki = $formBuilder -> getHasloNiewlasciweZnaki();
         $this -> hasloInneWDrugimPolu = $formBuilder -> getHasloInneWDrugimPolu();
         $this -> regulaminBrakAkceptacji = $formBuilder -> getRegulaminBrakAkceptacji();
         $this -> bledneDaneLogowania = $formBuilder -> getBledneDaneLogowania();
@@ -70,9 +73,9 @@ class Form
         return $this -> loginNiewlasciwaDlugosc;
     }
 
-    public function getLoginZPolskimiZnakami()
+    public function getLoginNiewlasciweZnaki()
     {
-        return $this -> loginZPolskimiZnakami;
+        return $this -> loginNiewlasciweZnaki;
     }
 
     public function getEmail()
@@ -98,6 +101,11 @@ class Form
     public function getHasloNiewlasciwaDlugosc()
     {
         return $this -> hasloNiewlasciwaDlugosc;
+    }
+
+    public function getHasloNiewlasciweZnaki()
+    {
+        return $this -> hasloNiewlasciweZnaki;
     }
     
     public function getHasloInneWDrugimPolu()

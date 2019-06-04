@@ -71,10 +71,10 @@ class Skil extends Controller
         {
             //Pobranie rozmiaru od użytkownika
             $form = (new FormBuilder())
-                    -> addSizeOfTable(@$_POST['wartosc'])
+                    -> addSizeOfTable($_POST['wartosc'])
                     -> buildForm();
             //Przypisanie go do sesji
-            $this -> session ->setVariable('size', $_POST['wartosc']);
+            @$this -> session -> setVariable('size', $_POST['wartosc']);
 
             //Wygenerowanie tablicy
             $memory = new Memory($form -> getSizeOfTable());
@@ -98,7 +98,7 @@ class Skil extends Controller
     //Użytkownik uzupełnia pola i sprawdza ile zapamiętał
     public function changeAction()
     {
-        $table = new Table($this -> session -> getVariable('size'));
+        $table = new Table(@$this -> session -> getVariable('size'));
         echo $table -> getTable();
         unset($table);
     }

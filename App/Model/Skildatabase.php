@@ -85,6 +85,8 @@ class Skildatabase extends Model
     {
         $db_connect = parent::dbConnect();
 
+        $login = mysqli_real_escape_string($db_connect, $login);
+
         return $resultLog = $db_connect -> query("SELECT login FROM uzytkownicy WHERE login = '$login'");
     }
 
@@ -93,6 +95,9 @@ class Skildatabase extends Model
     public static function checkLoginAndPassword($login, $password)
     {
         $db_connect = parent::dbConnect();
+
+        $login = mysqli_real_escape_string($db_connect, $login);
+        $password = mysqli_real_escape_string($db_connect, $password);
 
         return $zapytanie = $db_connect -> query("SELECT * FROM uzytkownicy WHERE login = '$login' AND haslo = '$password'"); 
     }
@@ -103,7 +108,9 @@ class Skildatabase extends Model
     {
         $db_connect = parent::dbConnect();
 
-        return $ressults = $db_connect -> query("SELECT tempo, zrozumienie FROM uzytkownicy WHERE login = '$login'"); 
+        $login = mysqli_real_escape_string($db_connect, $login);
+
+        return $results = $db_connect -> query("SELECT tempo, zrozumienie FROM uzytkownicy WHERE login = '$login'"); 
     }
 
 
@@ -111,6 +118,8 @@ class Skildatabase extends Model
     public static function updatePassword($email, $password)
     {
         $db_connect = parent::dbConnect();
+
+        
 
         $db_connect -> query("UPDATE uzytkownicy SET haslo='$password' WHERE email='$email'");
     }

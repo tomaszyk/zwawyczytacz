@@ -53,7 +53,7 @@
                 
                 												
 			</script>
-            <!-- Ponowne przesłąnie danych z formularza i wygenerowanie nowej tabeli -->
+            <!-- Ponowne przesłanie danych z formularza i wygenerowanie nowej tabeli -->
             
             <div class = "text-center">
                 <input id="input-zatwierdz" type="submit" value="Zatwierdź" class="btn btn-primary">
@@ -73,6 +73,7 @@
 <!-- Tablica ze słowami z bzay danych -->
 <center> 
     <div id = "tabela">
+        
         <?php  echo @$table; ?>
     </div>
     

@@ -19,7 +19,7 @@
     </div> 
 	    <div class = "error"><?php echo @$loginWBazie; ?></div>
         <div class = "error"><?php echo @$loginNiewlasciwaDlugosc; ?></div>
-        <div class = "error"><?php echo @$loginZPolskimiZnakami; ?></div>	
+        <div class = "error"><?php echo @$loginNiewlasciweZnaki; ?></div>	
         <br>
 
          <div class="form-group">
@@ -37,6 +37,7 @@
         </div>
 
         <div class = "error"><?php echo @$hasloNiewlasciwaDlugosc; ?></div>
+        <div class = "error"><?php echo @$hasloNiewlasciweZnaki; ?></div>
 		<br>
 
         

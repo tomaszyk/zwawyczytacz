@@ -10,7 +10,7 @@ use Core\user\UserBuilder;
 use App\Config;
 
 
-//Kontroler, któy odpowiada za obługę użytkowników niezalogowanych
+//Kontroler, który odpowiada za obługę użytkowników niezalogowanych
 class Welcome extends Controller
 {
     //Akcja sprawdza czy użytkownik jest zalogowany
@@ -55,7 +55,17 @@ class Welcome extends Controller
             {
                 //Jeżeli testy sie nie powiodły, użytkownik pozostaje na stronie z formularzem rejestracji oraz
                 //informacją o błedach
-                View::render('Welcome/registrationview.php', ['loginWBazie' => @$form -> getLoginWBazie(), 'loginNiewlasciwaDlugosc' => @$form -> getLoginNiewlasciwaDlugosc(), 'loginZPolskimiZnakami' => @$form -> getLoginZPolskimiZnakami(), 'emailWBazie' => @$form -> getEmailWBazie(), 'emailZNiewlasciwymiZnakami' => @$form -> getEmailZNiewlasciwymiZnakami(), 'hasloNiewlasciwaDlugosc' => @$form -> getHasloNiewlasciwaDlugosc(), 'hasloInneWDrugimPolu' => @$form -> getHasloInneWDrugimPolu(), 'regulaminBrakAkceptacji' => @$form -> getRegulaminBrakAkceptacji()]);
+                View::render('Welcome/registrationview.php',
+                 ['loginWBazie' => @$form -> getLoginWBazie(),
+                  'loginNiewlasciwaDlugosc' => @$form -> getLoginNiewlasciwaDlugosc(),
+                  'loginNiewlasciweZnaki' => @$form -> getLoginNiewlasciweZnaki(),
+                  'emailWBazie' => @$form -> getEmailWBazie(),
+                   'emailZNiewlasciwymiZnakami' => @$form -> getEmailZNiewlasciwymiZnakami(),
+                    'hasloNiewlasciwaDlugosc' => @$form -> getHasloNiewlasciwaDlugosc(),
+                    'hasloNiewlasciweZnaki' => @$form -> getHasloNiewlasciweZnaki(),
+                     'hasloInneWDrugimPolu' => @$form -> getHasloInneWDrugimPolu(),
+                      'regulaminBrakAkceptacji' => @$form -> getRegulaminBrakAkceptacji()
+                      ]);
                 return false;
 
             }

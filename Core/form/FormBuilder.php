@@ -18,8 +18,20 @@ class FormBuilder extends Form
     //Testy dla loginu
     public function addLogin($login)
     {
-        //Sprawdzenie czy podany login istnieje już w bazie
-        $resultLog = Skildatabase::checkLogin($login);
+        if(preg_match('/^[a-zA-Z0-9]+$/', $login))
+        {
+            //Sprawdzenie czy podany login istnieje już w bazie
+            $resultLog = Skildatabase::checkLogin($login);
+        }
+        else
+        {
+            $loginNiewlasciewZnaki = 'Login może zawierać tylko duże i małe litery oraz cyfry';
+
+            $this -> wszystkoOK = false;
+            $this -> loginNiewlasciweZnaki = $loginNiewlasciewZnaki;
+            return $this;
+        }
+        
         
         if($resultLog -> num_rows > 0)
         { 
@@ -40,16 +52,6 @@ class FormBuilder extends Form
             return $this;
         }
 
-        //Sprawdzenie czy login nie zawiera znaków specjalnych i polskich ogonków
-        if(ctype_alnum($login) == false)
-        {
-            $loginZPolskimiZnakami = 'Login nie może zawierać polskich znaków';
-            
-            $this -> wszystkoOK = false;
-            $this -> loginZPolskimiZnakami = $loginZPolskimiZnakami;
-            return $this;
-        }
-
         $this -> login = $login;
         return $this;
     }
@@ -64,24 +66,26 @@ class FormBuilder extends Form
         return $this -> loginNiewlasciwaDlugosc;
     }
 
-    public function getLoginZPolskimiZnakami()
-    {
-        return $this -> loginZPolskimiZnakami;
-    }
-
     public function addEmail($email)
     {
+        
          //Sprawdzenie czy email istnieje już w bazie
-         $result = Skildatabase::checkEmail($email);
-    
-         if($result -> num_rows > 0)
+         if(filter_var($email, FILTER_VALIDATE_EMAIL))
          {
-             $emailWBazie = 'Podany adres istnieje w bazie';
+            $result = Skildatabase::checkEmail($email);
 
-             $this -> wszystkoOK = false;
-             $this -> emailWBazie = $emailWBazie;
-             return $this;
+            if($result -> num_rows > 0)
+            {
+                $emailWBazie = 'Podany adres istnieje w bazie';
+
+                $this -> wszystkoOK = false;
+                $this -> emailWBazie = $emailWBazie;
+                return $this;
+            }
          }
+         
+    
+         
 
          //Sprawdzenie czy email nie zawiera niedozwolonych znaków
          $emailS = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -103,7 +107,7 @@ class FormBuilder extends Form
     public function addLoginAndPassword($login, $password)
     {
         // Pobieranie z bazy rekordu o zadanym loginie i zaszyfrowanym haśle
-        $zapytanie = Skildatabase::checkLoginAndPassword($login, md5($password));
+        $zapytanie = Skildatabase::checkLoginAndPassword(htmlspecialchars($login), md5(htmlspecialchars($password)));
 
         //Sprawdzenie czy w bazie był tylko jeden rekord, tzn jeden użytkownik o zadanym loginie i haśle
         if($zapytanie -> num_rows == 1)
@@ -128,6 +132,14 @@ class FormBuilder extends Form
 
     public function addPassword($password)
     {
+        if(!preg_match('/^[a-zA-Z0-9]+$/', $password))
+        {
+            $hasloNiewlasciweZnaki = 'Hasło może zawierać tylko małe i duże litery oraz cyfry';
+
+            $this -> wszystkoOK = false;
+            $this -> hasloNiewlasciweZnaki = $hasloNiewlasciweZnaki;
+            return $this;
+        }
         //Sprawdzenie czy haslo jest odpowiedniej długości
         if(strlen($password) < 8 || strlen($password) > 20)
         {
