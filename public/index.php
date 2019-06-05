@@ -21,7 +21,7 @@ $url = $_SERVER['QUERY_STRING'];
 $router = new Router();
 
 //dodanie routy
-$router -> add('{controller}/{action}');
+$router->add('{controller}/{action}');
 
 //Tworzenie obiektu kontrolera i wywołanie akcji $controller -> action()
-$router -> dispatch($url);
+$router->dispatch($url);

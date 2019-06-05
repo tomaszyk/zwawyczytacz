@@ -9,19 +9,19 @@ class UserBuilder extends User
     //Przesłonięcie konstruktora z klasy User
     public function __construct()
     {
-        
+
     }
 
     //Setery ustalają wartości poszczególnych właściwości obiektu UserBuilder
     public function setLogin($login)
     {
-        $this -> login = $login;
+        $this->login = $login;
         return $this;
     }
 
     public function setPassword($password)
     {
-        $this -> password = $password;
+        $this->password = $password;
         return $this;
     }
 

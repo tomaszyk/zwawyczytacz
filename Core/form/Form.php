@@ -6,12 +6,12 @@ use Core\form\FormBuilder;
 
 //Klasa Form towrzy formularze używane w kilku miejscach w aplikacji
 //Wykorzystuje  klasę FormBuilder, poszczególne włąściwości obiektu ustalane są w różnych miejscach aplikacji
-class Form 
+class Form
 {
     protected $login = '';
     protected $email = '';
     protected $password = '';
-    protected $regulations = NULL;
+    protected $regulations = null;
     protected $sizeOfTable = '';
     protected $file = '';
     protected $sizeOfEyeshot = '';
@@ -34,130 +34,128 @@ class Form
     //Konstruktor pobiera obiekt klasy FormBuilder i wartości jego włąsciwości są przypisane własciwościom obiektu Form
     public function __construct(FormBuilder $formBuilder)
     {
-        $this -> login = $formBuilder -> getLogin();
-        $this -> email = $formBuilder -> getEmail();
-        $this -> password = $formBuilder -> getPassword();
-        $this -> regulations = $formBuilder -> getRegulations();
-        $this -> sizeOfTable = $formBuilder -> getSizeOfTable();
-        $this -> file = $formBuilder -> getFile();
-        $this -> sizeOfEyeshot = $formBuilder -> getSizeOfEyeshot();
-        $this -> timeOfRead = $formBuilder -> getTimeOfRead();
-        $this -> wszystkoOK = $formBuilder -> getWszystkoOK();
+        $this->login = $formBuilder->getLogin();
+        $this->email = $formBuilder->getEmail();
+        $this->password = $formBuilder->getPassword();
+        $this->regulations = $formBuilder->getRegulations();
+        $this->sizeOfTable = $formBuilder->getSizeOfTable();
+        $this->file = $formBuilder->getFile();
+        $this->sizeOfEyeshot = $formBuilder->getSizeOfEyeshot();
+        $this->timeOfRead = $formBuilder->getTimeOfRead();
+        $this->wszystkoOK = $formBuilder->getWszystkoOK();
         //Błędy
-        $this -> loginWBazie = $formBuilder -> getLoginWBazie();
-        $this -> loginNiewlasciwaDlugosc = $formBuilder -> getLoginNiewlasciwaDlugosc();
-        $this -> loginNiewlasciweZnaki = $formBuilder -> getLoginNiewlasciweZnaki();
-        $this -> emailWBazie = $formBuilder -> getEmailWBazie();
-        $this -> emailZNiewlasciwymiZnakami = $formBuilder -> getEmailZNiewlasciwymiZnakami();
-        $this -> hasloNiewlasciwaDlugosc = $formBuilder -> getHasloNiewlasciwaDlugosc();
-        $this -> hasloNiewlasciweZnaki = $formBuilder -> getHasloNiewlasciweZnaki();
-        $this -> hasloInneWDrugimPolu = $formBuilder -> getHasloInneWDrugimPolu();
-        $this -> regulaminBrakAkceptacji = $formBuilder -> getRegulaminBrakAkceptacji();
-        $this -> bledneDaneLogowania = $formBuilder -> getBledneDaneLogowania();
-        $this -> error = $formBuilder -> getError();
+        $this->loginWBazie = $formBuilder->getLoginWBazie();
+        $this->loginNiewlasciwaDlugosc = $formBuilder->getLoginNiewlasciwaDlugosc();
+        $this->loginNiewlasciweZnaki = $formBuilder->getLoginNiewlasciweZnaki();
+        $this->emailWBazie = $formBuilder->getEmailWBazie();
+        $this->emailZNiewlasciwymiZnakami = $formBuilder->getEmailZNiewlasciwymiZnakami();
+        $this->hasloNiewlasciwaDlugosc = $formBuilder->getHasloNiewlasciwaDlugosc();
+        $this->hasloNiewlasciweZnaki = $formBuilder->getHasloNiewlasciweZnaki();
+        $this->hasloInneWDrugimPolu = $formBuilder->getHasloInneWDrugimPolu();
+        $this->regulaminBrakAkceptacji = $formBuilder->getRegulaminBrakAkceptacji();
+        $this->bledneDaneLogowania = $formBuilder->getBledneDaneLogowania();
+        $this->error = $formBuilder->getError();
     }
 
     //Getery do poszczególnych właściwości
     public function getLogin()
     {
-        return $this -> login;
+        return $this->login;
     }
 
     public function getLoginWBazie()
     {
-        return $this -> loginWBazie;
+        return $this->loginWBazie;
     }
 
     public function getLoginNiewlasciwaDlugosc()
     {
-        return $this -> loginNiewlasciwaDlugosc;
+        return $this->loginNiewlasciwaDlugosc;
     }
 
     public function getLoginNiewlasciweZnaki()
     {
-        return $this -> loginNiewlasciweZnaki;
+        return $this->loginNiewlasciweZnaki;
     }
 
     public function getEmail()
     {
-        return $this -> email;
+        return $this->email;
     }
 
     public function getEmailWBazie()
     {
-        return $this -> emailWBazie;
+        return $this->emailWBazie;
     }
 
     public function getEmailZNiewlasciwymiZnakami()
     {
-        return $this -> emailZNiewlasciwymiZnakami;
+        return $this->emailZNiewlasciwymiZnakami;
     }
 
     public function getPassword()
     {
-        return $this -> password;
+        return $this->password;
     }
 
     public function getHasloNiewlasciwaDlugosc()
     {
-        return $this -> hasloNiewlasciwaDlugosc;
+        return $this->hasloNiewlasciwaDlugosc;
     }
 
     public function getHasloNiewlasciweZnaki()
     {
-        return $this -> hasloNiewlasciweZnaki;
+        return $this->hasloNiewlasciweZnaki;
     }
-    
+
     public function getHasloInneWDrugimPolu()
     {
-        return $this -> hasloInneWDrugimPolu;
+        return $this->hasloInneWDrugimPolu;
     }
 
     public function getBledneDaneLogowania()
     {
-        return $this -> bledneDaneLogowania;
+        return $this->bledneDaneLogowania;
     }
-  
+
     public function getRegulations()
     {
-        return $this -> regulations;
+        return $this->regulations;
     }
 
     public function getRegulaminBrakAkceptacji()
     {
-        return $this -> regulaminBrakAkceptacji;
+        return $this->regulaminBrakAkceptacji;
     }
 
     public function getSizeOfTable()
     {
-        return $this -> sizeOfTable;
+        return $this->sizeOfTable;
     }
 
     public function getFile()
     {
-        return $this -> file;
+        return $this->file;
     }
 
     public function getsizeOfEyeshot()
     {
-        return $this -> sizeOfEyeshot;
+        return $this->sizeOfEyeshot;
     }
 
     public function getTimeOfRead()
     {
-        return $this -> timeOfRead;
+        return $this->timeOfRead;
     }
 
     public function getWszystkoOk()
     {
-        return $this -> wszystkoOK;
+        return $this->wszystkoOK;
     }
 
     public function getError()
     {
-        return $this -> error;
+        return $this->error;
     }
 
 }
-
-

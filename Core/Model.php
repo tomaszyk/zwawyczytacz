@@ -12,17 +12,14 @@ class Model
     public static function dbConnect()
     {
         $db_connect = new \mysqli($db_host = Config::DB_HOST, $db_user = Config::DB_USER, $db_password = Config::DB_PASSWORD, $db_name = Config::DB_NAME);
-        $db_connect -> set_charset('utf8');
+        $db_connect->set_charset('utf8');
 
-        if($db_connect -> errno)
-        {
+        if ($db_connect->errno) {
             echo 'Błąd połączenia';
-        }
-        else
-        {
+        } else {
             return $db_connect;
         }
-        
+
     }
 
 }

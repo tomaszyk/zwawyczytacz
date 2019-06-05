@@ -3,9 +3,9 @@
 namespace Core\session;
 
 //Klasa tworzy sesję
-class Session 
+class Session
 {
-    
+
     public function __construct()
     {
         session_start();
@@ -25,6 +25,6 @@ class Session
 
     public function getVariable($key)
     {
-        return unserialize(base64_decode($_SESSION[$key]));  
+        return unserialize(base64_decode($_SESSION[$key]));
     }
 }

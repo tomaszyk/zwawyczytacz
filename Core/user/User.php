@@ -4,20 +4,20 @@ namespace Core\user;
 
 //Klasa user tworzy uzytkownika aplikacji
 
-class User 
+class User
 {
     protected $login = '';
     protected $password = '';
     // protected $speed = 0;
     // protected $understanding = 0;
     // protected $numberOfText = 0;
-    
+
     //Obiekt User jest tworzony przy użyciu klasy UserBuilder
     //Wartości poszczególnych zmiennych ustalana są na różnych etapach działąnia aplikacji
     public function __construct(UserBuilder $userBuilder)
     {
-        $this -> login = $userBuilder -> getLogin();
-        $this -> password = $userBuilder -> getPassword();
+        $this->login = $userBuilder->getLogin();
+        $this->password = $userBuilder->getPassword();
         // $this -> speed = $userBuilder -> getSpeed();
         // $this -> understanding = $userBuilder -> getUnderstanding();
         // $this -> numberOfText = $userBuilder -> getNumberOfText();
@@ -25,12 +25,12 @@ class User
 
     public function getLogin()
     {
-        return $this -> login;
+        return $this->login;
     }
 
     public function getPassword()
     {
-        return $this -> password;
+        return $this->password;
     }
 
     // public function getSpeed()

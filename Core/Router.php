@@ -2,12 +2,10 @@
 
 namespace Core;
 
-
 class Router
 {
     //Tablica routingu, zawiera routy i tablice asocjacyjne $params, z wartością kontrolera i akcji
     protected $routes = [];
-
 
     //Tablica z nazwą kontrolera i akcji
     protected $params = [];
@@ -23,33 +21,29 @@ class Router
 
         $route = '/^' . $route . '$/i';
 
-        $this -> routes[$route] = $params;
+        $this->routes[$route] = $params;
     }
 
     //Pobieranie tablicy routingu
     public function getRoutes()
     {
-        return $this -> routes; 
+        return $this->routes;
     }
 
     //Dopasowanie adresu do routy
     public function match($url)
     {
-        foreach($this -> routes as $route => $params)
-        {
-            if(preg_match($route, $url, $match))
-            {
-                foreach($match as $key => $value)
-                {
-                    if(is_string($key))
-                    {
-                        $this -> params[$key] = $value;
-                        
+        foreach ($this->routes as $route => $params) {
+            if (preg_match($route, $url, $match)) {
+                foreach ($match as $key => $value) {
+                    if (is_string($key)) {
+                        $this->params[$key] = $value;
+
                     }
                 }
-                
+
                 return true;
-            }   
+            }
         }
 
         return false;
@@ -57,50 +51,41 @@ class Router
 
     public function getParams()
     {
-        return $this -> params;
+        return $this->params;
     }
 
     //Tworzenie obiektu kontrolera i wywoływanie odpowiedniej akcji na podstawie parametrów z routy
     public function dispatch($url)
     {
-       $url = $this -> removeQueryStringVariable($url);
+        $url = $this->removeQueryStringVariable($url);
 
-       if($this -> match($url))
-       {
-            $controller = $this -> params['controller'];
+        if ($this->match($url)) {
+            $controller = $this->params['controller'];
 
-            $controller = $this -> convertToStudlyCaps($controller);
+            $controller = $this->convertToStudlyCaps($controller);
 
             $controller = "App\Controllers\\$controller";
 
-            if(class_exists($controller))
-            {
+            if (class_exists($controller)) {
                 $object_controller = new $controller();
 
-                $action = $this -> params['action'];
+                $action = $this->params['action'];
 
-                $action = $this -> convertToCamelCase($action);
+                $action = $this->convertToCamelCase($action);
 
-                if(is_callable([$object_controller, $action]))
-                {
-                    $object_controller -> $action();
+                if (is_callable([$object_controller, $action])) {
+                    $object_controller->$action();
+                } else {
+                    echo 'Nie można wywołać metody ' . $action . ' w kontrolerze ' . $controller;
                 }
-                else
-                {
-                    echo 'Nie można wywołać metody ' . $action . ' w kontrolerze ' .  $controller;
-                }
-            
-            }
-            else
-            {
+
+            } else {
                 echo 'Błedna nazwa kontrolera ' . $controller;
             }
-       }
-       else
-       {
-           echo 'Błędna routa';
-       }
-       
+        } else {
+            echo 'Błędna routa';
+        }
+
     }
     //Konwersja wartości parametru kontrolera do formatu StudlyCaps (duża pierwsza litera)
     public function convertToStudlyCaps($name)
@@ -111,26 +96,22 @@ class Router
     //Konwersja wartości parametru akcji do formatu CamelCase(duże litera na początku każdego słowa)
     public function convertToCamelCase($name)
     {
-        return lcfirst($this -> convertToStudlyCaps($name));
+        return lcfirst($this->convertToStudlyCaps($name));
     }
 
     //Oczyszczanie adresu ze zmiennych, zostanie tylko nazwa kontrolera i akcji
     public function removeQueryStringVariable($url)
     {
-        if($url != '')
-        {
+        if ($url != '') {
             $parts = explode('&', $url, 2);
 
-            if(strpos($parts[0], '=') === false)
-            {
+            if (strpos($parts[0], '=') === false) {
                 $url = $parts[0];
-            }
-            else 
-            {
+            } else {
                 $url = '';
             }
         }
-        
+
         return $url;
     }
 }
